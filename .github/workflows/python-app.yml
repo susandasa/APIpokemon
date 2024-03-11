@@ -35,4 +35,3 @@ jobs:
         context: .
         push: true
         tags: dasasutanto/pokeapi:latest
-        tags: dasasutanto/pokeapi:latest
