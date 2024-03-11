@@ -4,7 +4,7 @@ COPY pokemon.py/app/pokemon.py
 
 COPY API-Pokemon.py/app/API-Pokemon.py
 
-CMD [ "python","run","/app/pokemon.go" ]
+CMD [ "python","run","/app/pokemon.py" ]
 
 CMD ["API.py", "RUN", "/app/API-Pokemon.py"]
 
