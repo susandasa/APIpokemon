@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2.3.1
       with:
-        python-version: '3.12.2-alpine' 
+        python-version: '3.12.2' 
 
     - name: Install dependencies
       run: |
