@@ -33,8 +33,4 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-<<<<<<< HEAD
         tags: dasasutanto/pokeapi:latest
-=======
-        tags: dasasutanto/pokeapi:latest
->>>>>>> origin/master
