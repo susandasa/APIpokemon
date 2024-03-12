@@ -5,7 +5,7 @@ FROM python:3.12.2-alpine
 WORKDIR /app
 
 # Copy the requirements file into the container at /app
-COPY ./requirements.txt /app/requirements.txt
+COPY requirements.txt /app/requirements.txt
 
 # Install any dependencies
 RUN pip install -r requirements.txt
