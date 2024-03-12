@@ -1,10 +1,24 @@
-FROM python:3.12.2
+# Use the official Python image
+FROM python:latest
 
-COPY pokemon.py/app/pokemon.py
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-COPY API-Pokemon.py/app/API-Pokemon.py
+# Set the working directory in the container
+WORKDIR /app
 
-CMD [ "python","run","/app/pokemon.py" ]
+# Copy the requirements file into the container at /app
+COPY requirements.txt /app/
 
-CMD ["API.py", "RUN", "/app/API-Pokemon.py"]
+# Install any dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
+# Copy the current directory contents into the container at /app
+COPY . /app/
+
+# Expose port 5000 to the outside world
+EXPOSE 5000
+
+# Run the application
+CMD ["python", "pokemon.py"]
