@@ -9,7 +9,8 @@ db = mysql.connector.connect(
     host="localhost",
     user="root",
     password="",  # Password for your MySQL database
-    database="apipokemon"
+    database="apipokemon",
+    port=3306
 )
 cursor = db.cursor()
 
