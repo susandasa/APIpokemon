@@ -33,4 +33,6 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: dasasutanto/pokeapi:latest
+        repository: dasasutanto/pokeapi:latest
+        tag_with_ref: true
+        tag_with_sha: true
