@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zabbix-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zabbix-agent
+  template:
+    metadata:
+      labels:
+        app: zabbix-agent
+    spec:
+      containers:
+      - name: zabbix-agent
+        image: zabbix/zabbix-agent
+        env:
+        - name: ZBX_SERVER_HOST
+          value: 68.183.20.86
+        - name: ZBX_SERVER_PORT
+          value: "10050"
+        - name: ZBX_HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        # Add other environment variables as needed
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zabbix-agent
+  annotations:
+    kubernetes.digitalocean.com/load-balancer-id: "a117dd5a46bbb4cbdadb028d8880956d"
+  labels:
+    app: zabbix-agent
+spec:
+  ports:
+  - port: 10050
+    protocol: TCP
+    name: zabbix-agent
+  selector:
+    app: zabbix-agent
+  type: LoadBalancer

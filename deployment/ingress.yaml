@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pokemon-ingress
+spec:
+  rules:
+  - host: poke-itcamp.xyz  
+    http:
+      paths:
+      - path: /result
+        pathType: Prefix
+        backend:
+          service:
+            name: pokemon-service
+            port:
+              number: 80  
+
+      

@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokemon-api
+  labels:
+    app: pokemon-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pokemon-api
+  # pod spec begins here
+  template:
+    metadata:
+      labels:
+        app: pokemon-api
+    spec:
+      containers:
+        - name: pokemon-api
+          image: <IMAGE>
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          env:
+            - name: FLASK_APP
+              value: "app.py"
+              
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pokemon-secret-password
+                  key:
